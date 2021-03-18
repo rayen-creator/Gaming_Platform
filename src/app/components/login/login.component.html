@@ -1,0 +1,40 @@
+<h3>Login</h3>
+<h5>Please fill in this form to login your account.</h5>
+<div id="contact" class="signup">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="col">
+                <form class="contact_bg" [formGroup]='loginForm'>
+                    <div class="formstyle">
+                        <!-- Email -->
+                        <div class="form-group">
+                            <input type="email" class="form-control" [ngClass]="loginForm.controls['Email'].invalid && (loginForm.controls['Email'].dirty || loginForm.controls['Email'].touched) ? 'is-invalid' : ''" placeholder="Email" formControlName="Email">
+                            <div *ngIf="loginForm.controls['Email'].invalid && (loginForm.controls['Email'].dirty || loginForm.controls['Email'].touched)">
+                                <div *ngIf="loginForm.controls['Email'].errors.required" class="text-danger">
+                                    Email is required
+                                </div>
+                                <div *ngIf="loginForm.controls['Email'].errors.email" class="text-danger">
+                                    Email not valid
+                                    <br>Exemple : exmple@exemple.com
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Password -->
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" formControlName="Password">
+                            <div *ngIf="loginForm.controls['Password'].invalid && (loginForm.controls['Password'].dirty || loginForm.controls['Password'].touched)">
+                                <div *ngIf="loginForm.controls['Password'].errors.required" class="text-danger">
+                                    Password is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <input type="submit" class="btn btn-danger btn-lg" [disabled]="!loginForm.valid" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

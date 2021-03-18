@@ -8,7 +8,7 @@
                     <div class="formstyle">
                         <!-- First Name -->
                         <div class="form-group">
-                            <input type="text" class="form-control" [ngClass]="signupForm.controls['Firstname'].invalid && (signupForm.controls['Firstname'].dirty || signupForm.controls['Firstname'].touched) ? 'is-invalid' : 'is-valid'" placeholder="First name" formControlName="Firstname">
+                            <input type="text" class="form-control" [ngClass]="Valid('Firstname')" placeholder="First name" formControlName="Firstname">
                             <div *ngIf="signupForm.controls['Firstname'].invalid && (signupForm.controls['Firstname'].dirty || signupForm.controls['Firstname'].touched)">
                                 <div *ngIf="signupForm.controls['Firstname'].errors.required" class="text-danger">
                                     First Name is required
@@ -20,7 +20,7 @@
                         </div>
                         <!-- Last Name -->
                         <div class="form-group">
-                            <input type="text" class="form-control" [ngClass]="signupForm.controls['Lastname'].invalid && (signupForm.controls['Lastname'].dirty || signupForm.controls['Lastname'].touched) ? 'is-invalid' : 'is-valid'" placeholder="Lastname" formControlName="Lastname">
+                            <input type="text" class="form-control" [ngClass]="Valid('Lastname')" placeholder="Lastname" formControlName="Lastname">
                             <div *ngIf="signupForm.controls['Lastname'].invalid && (signupForm.controls['Lastname'].dirty || signupForm.controls['Lastname'].touched)">
                                 <div *ngIf="signupForm.controls['Lastname'].errors.required" class="text-danger">
                                     Last Name is required
@@ -32,7 +32,7 @@
                         </div>
                         <!-- Email -->
                         <div class="form-group">
-                            <input type="email" class="form-control" [ngClass]="signupForm.controls['Email'].invalid && (signupForm.controls['Email'].dirty || signupForm.controls['Email'].touched) ? 'is-invalid' : 'is-valid'" placeholder="Email" formControlName="Email">
+                            <input type="email" class="form-control" [ngClass]="Valid('Email')" placeholder="Email" formControlName="Email">
                             <div *ngIf="signupForm.controls['Email'].invalid && (signupForm.controls['Email'].dirty || signupForm.controls['Email'].touched)">
                                 <div *ngIf="signupForm.controls['Email'].errors.required" class="text-danger">
                                     Email is required
@@ -45,11 +45,13 @@
                         </div>
                         <!-- Password -->
                         <div class="form-group">
-                            <input type="password" class="form-control" [ngClass]="signupForm.controls['Password'].invalid && 
-                            (signupForm.controls['Password'].dirty || signupForm.controls['Password'].touched) ? 'is-invalid' : 'is-valid'" placeholder="Password" formControlName="Password">
+                            <input type="password" class="form-control" [ngClass]="Valid('Password')" placeholder="Password" formControlName="Password">
                             <div *ngIf="signupForm.controls['Password'].invalid && (signupForm.controls['Password'].dirty || signupForm.controls['Password'].touched)">
-                                <div *ngIf="signupForm.controls['Password'].errors.required" class="text-danger">
+                                <div *ngIf="signupForm.controls['Password'].hasError('required')" class="text-danger">
                                     Password is required
+                                </div>
+                                <div *ngIf="signupForm.controls['Password'].hasError('minlength')" class="text-danger">
+                                    Password must be at least 8 characters
                                 </div>
                                 <div *ngIf="signupForm.controls['Password'].hasError('hasNumber')" class="text-danger">
                                     Password must contain at least one number
@@ -57,15 +59,13 @@
                                 <div *ngIf="signupForm.controls['Password'].hasError('hasCapitalCase') || signupForm.controls['Password'].hasError('hasSmallCase')" class="text-danger">
                                     Password must contain at least one Uppercase letter and one lowercase letter
                                 </div>
-
                             </div>
                         </div>
                         <!-- ConfirmPasswd -->
                         <div class="form-group">
-                            <input type="password" class="form-control" [ngClass]="signupForm.controls['ConfirmPassword'].invalid && (signupForm.controls['ConfirmPassword'].dirty || signupForm.controls['ConfirmPassword'].touched) ? 'is-invalid' : 'is-valid'" placeholder="Confirm Password"
-                                formControlName="ConfirmPassword">
+                            <input type="password" class="form-control" [ngClass]="Valid('ConfirmPassword')" placeholder="Confirm Password" formControlName="ConfirmPassword">
                             <div *ngIf="signupForm.controls['ConfirmPassword'].invalid && (signupForm.controls['ConfirmPassword'].dirty || signupForm.controls['ConfirmPassword'].touched)">
-                                <div *ngIf="signupForm.controls['Password'].errors.required || signupForm.controls['ConfirmPassword'].hasError('NoPassswordMatch')" class="text-danger">
+                                <div *ngIf="signupForm.controls['ConfirmPassword'].errors.required || signupForm.controls['ConfirmPassword'].hasError('NoPassswordMatch')" class="text-danger">
                                     Password do not match
                                 </div>
                             </div>

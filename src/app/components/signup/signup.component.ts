@@ -31,8 +31,9 @@ export class SignupComponent implements OnInit {
         // 4. check whether the entered password has a lower-case letter
         CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
          // 5. check whether the entered password has a special character
-        CustomValidators.patternValidator(/[!@#$%^&*()_+-=[]{};':",.<>':"|,.<>]/, { hasSpecialCharacters: true }),
-        Validators.minLength(8)])],
+        // CustomValidators.patternValidator(/[!@#$%^&*()_+-=[]{};':",.<>':"|,.<>]/, { hasSpecialCharacters: true }),
+        Validators.minLength(8)])
+      ],
       ConfirmPassword:['',Validators.compose([Validators.required])]
         // ConfirmPassword:['']
     }, 
@@ -40,11 +41,20 @@ export class SignupComponent implements OnInit {
       // check whether our password and confirm password match
       validator: CustomValidators.passwordMatchValidator
       // validator: CustomValidators.MustMatch('Password','ConfirmPassword')
-
     }
     );
   }
+ 
+   Valid(controlName : string){
+      if(this.signupForm.controls[controlName].valid && (this.signupForm.controls[controlName].dirty || this.signupForm.controls[controlName].touched) ){
+         return 'is-valid'
+       }
+      else if(this.signupForm.controls[controlName].invalid && (this.signupForm.controls[controlName].dirty || this.signupForm.controls[controlName].touched)){
+        return 'is-invalid'
+      }
 
+     }
+  
   f(){
     alert("button work");
   }

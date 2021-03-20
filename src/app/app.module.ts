@@ -9,6 +9,9 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewsComponent } from './components/news/news.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { UsernavbarComponent } from './components/usernavbar/usernavbar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     LoginComponent,
     SignupComponent,
+    NewsComponent,
+    NavbarComponent,
+    UsernavbarComponent,
   ],
   imports: [
     BrowserModule,

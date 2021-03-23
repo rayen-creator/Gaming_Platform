@@ -12,6 +12,7 @@
                     <div class="container">
                         <div class="col-md-12">
                             <div class="col">
+
                                 <form [formGroup]='signupForm'>
                                     <div class="formstyle">
                                         <!-- First Name -->
@@ -66,6 +67,9 @@
                                                 </div>
                                                 <div *ngIf="signupForm.controls['Password'].hasError('hasCapitalCase') || signupForm.controls['Password'].hasError('hasSmallCase')" class="text-danger">
                                                     Password must contain at least one Uppercase letter and one lowercase letter
+                                                </div>
+                                                <div *ngIf="signupForm.controls['Password'].hasError('hasSpecialCharacters') " class="text-danger">
+                                                    Password must contain Special Characters
                                                 </div>
                                             </div>
                                         </div>

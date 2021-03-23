@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 
 export class CustomValidators {
 
+    //#region patternValidator
     static patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
         return (control: AbstractControl): { [key: string]: any } => {
           if (!control.value) {
@@ -15,8 +16,10 @@ export class CustomValidators {
           return valid ? null : error;
         };
       }
+      //#endregion
 
-      //custom password match 1
+    
+      //#region custom password match 1
       static passwordMatchValidator(control: AbstractControl) {
         const Password: string = control.get('Password').value; // get password from our password form control
         const ConfirmPassword: string = control.get('ConfirmPassword').value; // get password from our confirmPassword form control
@@ -26,8 +29,9 @@ export class CustomValidators {
           control.get('ConfirmPassword').setErrors({ NoPassswordMatch: true });
         }
       }
+      //#endregion
       
-       //custom password match 2
+      //#region custom password match 2
       // custom validator to check that two fields match
       static MustMatch(controlName: string, matchingControlName: string){
         return (formGroup: FormGroup) => 
@@ -43,5 +47,6 @@ export class CustomValidators {
               }
         }
      }
+     //#endregion
 }
 

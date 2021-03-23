@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsComponent } from './components/news/news.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsernavbarComponent } from './components/usernavbar/usernavbar.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,8 @@ import { UsernavbarComponent } from './components/usernavbar/usernavbar.componen
     NewsComponent,
     NavbarComponent,
     UsernavbarComponent,
+    PageNotFoundComponent,
+    
   ],
   imports: [
     BrowserModule,

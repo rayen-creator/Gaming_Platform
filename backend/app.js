@@ -15,6 +15,8 @@ mongoose.connection
 
 //#region import models
 const User = require('./models/user');
+const Game = require('./models/game');
+
 //#endregion
 
 //#region Security configuration
@@ -39,5 +41,33 @@ app.use(bodyParser.urlencoded({
 }));
 //#endregion create express application
 
+app.post("/api/signup", (req, res) => {
+    bcrypt.hash(req.body.Password, 10).then((cryptedPwd) => {
+        const user = new User({
+            Firstname: req.body.Firstname,
+            Lastname: req.body.Lastname,
+            Email: req.body.Email,
+            Password: cryptedPwd,
+        });
+        user.save().then(
+            res.status(200).json({
+                message: "User addes successfully",
+            })
+        );
+    });
+});
+
+app.post('/api/AddGame', (req, res) => {
+    const game = new Game({
+        Platform: req.body.Platform,
+        Playtime: req.body.Playtime,
+        Achievements: req.body.Achievements,
+    });
+    game.save().then(
+        res.status(200).json({
+            message: 'Game Added with success'
+        })
+    );
+});
 
 module.exports = app;

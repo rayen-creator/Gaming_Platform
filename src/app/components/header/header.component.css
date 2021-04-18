@@ -4,3 +4,8 @@
     font-size: 300%;
     font-weight: bolder;
 }
+
+.responsive {
+    width: 100%;
+    height: auto;
+}

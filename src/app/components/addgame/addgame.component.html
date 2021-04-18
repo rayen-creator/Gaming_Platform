@@ -1,0 +1,35 @@
+<div class="container p-3">
+    <div class="offset-3 col-6">
+        <div class="card">
+
+            <div class="card card-body">
+                <h6>Add games to your Library</h6>
+                <div id="contact" class="signup">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <div class="col">
+                                <form [formGroup]="GameForm" class="frm">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Game's Picture</label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" formControlName="Platform" placeholder="Platform">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" formControlName="Playtime" placeholder="Playtime">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" formControlName="Achievements" placeholder="Achievements Progress">
+                                    </div>
+                                    <button type="button" (click)="AddGame(GameForm.value)" class="btn btn-danger">Save</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

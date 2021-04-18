@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 import { CustomValidators } from 'src/app/validators/custom-validators';
 
 @Component({
@@ -9,11 +10,12 @@ import { CustomValidators } from 'src/app/validators/custom-validators';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  
+  user:any={}
   signupForm:FormGroup
   constructor(
     private formBuilder:FormBuilder,
-    private router:Router
+    private router:Router,
+    private userservice:UserService
   ) { }
 
   ngOnInit() {
@@ -52,8 +54,12 @@ export class SignupComponent implements OnInit {
       }
    }
   
-  f(){
-    alert("button work");
-  }
+ Signup(){
+   this.userservice.signup(this.signupForm.value).subscribe(
+    ()=>{
+      this.router.navigate(['login']);
+    }
+   )
+ }
   
 }

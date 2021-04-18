@@ -1,0 +1,8 @@
+<h3>Library</h3>
+
+<div class="add">
+    <button type="button" class="btn btn-info" (click)="gotoadd()"><i class="bi bi-plus-circle"></i> Wanna add more games ? Just DO IT</button>
+</div>
+<div *ngFor="let g of games">
+    <app-games [game]='g'></app-games>
+</div>

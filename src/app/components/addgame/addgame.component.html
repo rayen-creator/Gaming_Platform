@@ -8,10 +8,17 @@
                     <div class="container">
                         <div class="col-md-12">
                             <div class="col">
-                                <form [formGroup]="GameForm" class="frm">
+                                <form [formGroup]="GameForm" class="frm" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Game's Picture</label>
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        <input type="file" accept="image/*" (change)="onImageSelected($event)" />
+
+                                        <div *ngIf="imagePreview !== '' && imagePreview ">
+                                            <img [src]="imagePreview" alt="" height="300px" width="90%">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" formControlName="Name" placeholder="Game'Name">
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control" formControlName="Platform" placeholder="Platform">
@@ -22,6 +29,8 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control" formControlName="Achievements" placeholder="Achievements Progress">
                                     </div>
+
+
                                     <button type="button" (click)="AddGame(GameForm.value)" class="btn btn-danger">Save</button>
 
                                 </form>

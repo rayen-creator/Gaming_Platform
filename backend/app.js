@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const path = require('path');
+const userRoutes = require('./routes/user');
 
 //MongoDB connection 
 const mongoose = require('mongoose');
@@ -19,7 +20,6 @@ mongoose.connection
 app.use('/images', express.static(path.join('backend/images')));
 
 //#region import models
-const User = require('./models/user');
 const Game = require('./models/game');
 
 //#endregion
@@ -87,25 +87,6 @@ app.post('/api/AddGame', multer({ storage: storage }).single('Image'), (req, res
 });
 
 
-app.post("/api/signup", (req, res) => {
-    bcrypt.hash(req.body.Password, 10).then((cryptedPwd) => {
-        const user = new User({
-            Firstname: req.body.Firstname,
-            Lastname: req.body.Lastname,
-            Email: req.body.Email,
-            Password: cryptedPwd,
-        });
-        user.save().then(
-            res.status(200).json({
-                message: "User addes successfully",
-            })
-        );
-    });
-});
-
-
-
-
 app.get('/api/GetAllGame', (req, res) => {
     Game.find((err, docs) => {
         if (err) {
@@ -119,5 +100,6 @@ app.get('/api/GetAllGame', (req, res) => {
 });
 
 
+app.use('/api/', userRoutes);
 
 module.exports = app;

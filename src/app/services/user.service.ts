@@ -16,7 +16,16 @@ export class UserService {
     return this.httpClient.post<{message:string}>(`${this.url}/api/signup`, user);
   }
 
-  login(user:any) {
-    return this.httpClient.post<{message:string, user:any}>(`${this.url}/api/login`, user);
+  getAllUser() {
+    return this.httpClient.get<{message:string,allusers:any}>(`${this.url}/api/getAllUser`);
   }
+
+  DeleteUsers(id) {
+    return this.httpClient.delete(`${this.url}/api/DeleteUsers/${id}`);
+  }
+ 
+  EditUser(user:any){
+    return this.httpClient.put(`${this.url}/api/EditUser/${user.id}`,user);
+  }
+
 }

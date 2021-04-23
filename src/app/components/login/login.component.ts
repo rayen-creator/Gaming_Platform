@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm:FormGroup;
   constructor(
     private formBuilder:FormBuilder,
-    private router:Router
+    private router:Router,
+    private authservice:AuthService
   ) { }
 
   ngOnInit() {
@@ -21,7 +24,8 @@ export class LoginComponent implements OnInit {
       Password:['',[Validators.required,Validators.minLength(8)]],
     })
   }
-  F(){
-    alert('login work')
+  Login(){
+    this.authservice.login(this.loginForm.value)
+     
   }
 }

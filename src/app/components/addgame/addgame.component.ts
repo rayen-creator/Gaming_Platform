@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
-
+import {Game} from 'backend/models/game'
 @Component({
   selector: 'app-addgame',
   templateUrl: './addgame.component.html',
@@ -34,6 +34,7 @@ AddGame(){
       this.router.navigate(['listgames']);
     }
   )
+
 }
 onImageSelected(event: Event) {
   const file = (event.target as HTMLInputElement).files[0];

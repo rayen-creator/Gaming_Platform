@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                     <div class="button">
-                                        <input type="submit" class="btn btn-danger btn-lg" (click)="F()" [disabled]="!loginForm.valid" value="Login">
+                                        <input type="submit" class="btn btn-danger btn-lg" (click)="Login(this.loginForm.value)" [disabled]="!loginForm.valid" value="Login">
                                     </div>
                                 </form>
                             </div>

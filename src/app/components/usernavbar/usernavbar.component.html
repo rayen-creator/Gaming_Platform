@@ -1,6 +1,16 @@
 <ul class="top_icon">
-    <li class="button_login"> <a routerLink="login">Login</a> </li>
-    <li> <a routerLink="signup">Signup</a> </li>
+    <li class="button_login" *ngIf="!userIsAuthenticated">
+        <a routerLink="login">Login</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+        <a routerLink="signup"> Signup</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+        <a routerLink=""> {{currentUser.Email}} </a>
+    </li>
+    <li class="button_login" *ngIf="userIsAuthenticated"> <a (click)='logout()'>Logout</a></li>
+
+
     <li class="mean-last">
         <a href="#"><img src="assets/images/search_icon.png" alt="#" /></a>
     </li>
